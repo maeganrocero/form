@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- Maegan Rocero
+	template.html
+	11/12/2021
+-->
+
+<html lang="en">
+<head>
+	<title>TotallyTotes: Template</title>
+	<link rel="shortcut icon" href="images/butterfly_animal.ico">
+	<link rel="apple-touch-icon" href="images/butterfly_animal.png">
+	<link rel="icon" sizes="192x192" href="images/butterfly_animal.png">
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/styles.css">
+	<meta name="viewport" content="width=device-width, intial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+
+	
+<!-- Use the main area to add the main content to the webpage -->
+<body>
+	<div id="error"></div>
+	<form id="form" action="/" method="GET">
+		<div>
+			<label for="name">Username</label>
+			<input id="name" name="name" type="text" >
+		</div>
+		<div>
+			<label for="password">Password</label>
+			<input id="password" name="password" type="password" required>
+			<p>password must be at least 8 characters</p>
+		</div>
+		<button type="submit">Submit</button>
+		
+	</form>
+
+
+<script>
+	const name = document.getElementById('name')
+	const password = document.getElementById('password')
+	const form = document.getElementById('form')
+	const errorElement = document.getElementById('error')
+	
+	form.addEventListener('submit', (e) => {
+		let messages = []
+		if (name.value === '' || name.value == null) {
+			messages.push('!user is required!')
+		}
+		
+		if (password.value.length <= 8){
+			messages.push('!password must be longer than 8 characters!')
+		}
+		
+		if (messages.length > 0) {
+			e.preventDefault()
+			errorElement.innerText = messages.join(', ')
+		}
+	})	
+</script>
+</body>
+</html>
